@@ -1,0 +1,15 @@
+# mysql
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-ecommerce
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: ecommerce
+    ports:
+      - "3306:3306"
+    volumes:
+      # - ./initial.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./mysql:/var/lib/mysql
