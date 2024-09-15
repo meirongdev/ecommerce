@@ -1,13 +1,16 @@
 package dev.meirong.ecommerce.domain;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Owner {
@@ -18,13 +21,17 @@ public class Owner {
 	private String firstName;
 
 	private String lastName;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "owner")
-	private List<Car> cars;
-	public List<Car> getCars() {
+
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "car_owner", joinColumns = {
+			@JoinColumn(name = "owner _id") }, inverseJoinColumns = { @JoinColumn(name = "car_id") })
+	private Set<Car> cars = new HashSet<>();
+
+	public Set<Car> getCars() {
 		return cars;
 	}
 
-	public void setCars(List<Car> cars) {
+	public void setCars(Set<Car> cars) {
 		this.cars = cars;
 	}
 
@@ -51,7 +58,6 @@ public class Owner {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 	public Owner() {
 	}

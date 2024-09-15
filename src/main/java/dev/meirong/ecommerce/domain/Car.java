@@ -1,13 +1,15 @@
 package dev.meirong.ecommerce.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Car {
@@ -24,17 +26,8 @@ public class Car {
 	@Column(nullable = false, length = 200)
 	private String description;
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "owner")
-	private Owner owner;
-
-	public Owner getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Owner owner) {
-		this.owner = owner;
-	}
+	@ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER)
+	private Set<Owner> owners = new HashSet<Owner>();
 
 	public Car() {
 		super();
@@ -114,6 +107,14 @@ public class Car {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Set<Owner> getOwners() {
+		return owners;
+	}
+
+	public void setOwners(Set<Owner> owners) {
+		this.owners = owners;
 	}
 
 	@Override
