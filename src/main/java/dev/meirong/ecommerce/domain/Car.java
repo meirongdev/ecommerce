@@ -27,7 +27,7 @@ public class Car {
 	private String description;
 
 	@ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER)
-	private Set<Owner> owners = new HashSet<Owner>();
+	private Set<Owner> owners = new HashSet<>();
 
 	public Car() {
 		super();

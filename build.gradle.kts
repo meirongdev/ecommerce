@@ -27,7 +27,8 @@ dependencies {
 		exclude(group = "xml-apis", module = "xml-apis")
 	}
 	// implementation("org.hibernate:hibernate-core:6.6.0.Final")
-	runtimeOnly("com.h2database:h2")
+	// runtimeOnly("com.h2database:h2")
+	runtimeOnly("mysql:mysql-connector-java:8.0.33")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
