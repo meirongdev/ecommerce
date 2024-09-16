@@ -1,7 +1,5 @@
 package dev.meirong.ecommerce;
 
-import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -32,24 +30,29 @@ public class EcommerceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		var car = new Car("Toyota", "Camry", "Black", "A1000", 20000, 1000, "A car for the family");
-		carRepository.save(car);
-		logger.info("Car is created {}",  car.getId());
 
-		Owner owner = new Owner("John", "Doe");
-		owner.getCars().add(car);
+		Owner owner = new Owner("user1");
 		ownerRepository.save(owner);
 
 
+		var car = new Car("Toyota", "Camry", "Black", "A1000", 20000, 1000, "A car for the family");
+		car.setOwner(owner);
+		carRepository.save(car);
+		logger.info("Car is created {}", car.getId());
+
+
 		// for (Car c : repository.findAll()) {
-		// 	logger.info(
-		// 			"brand: {}, model{}, color: {}, registrationNumber: {}, modelYear: {}, price: {}, description: {}",
-		// 			c.getBrand(), c.getModel(), c.getColor(), c.getRegistrationNumber(), c.getModelYear(), c.getPrice(),
-		// 			c.getDescription());
+		// logger.info(
+		// "brand: {}, model{}, color: {}, registrationNumber: {}, modelYear: {}, price: {},
+		// description: {}",
+		// c.getBrand(), c.getModel(), c.getColor(), c.getRegistrationNumber(), c.getModelYear(),
+		// c.getPrice(),
+		// c.getDescription());
 		// }
 
 		for (Car c : carRepository.findByBrand("Toyota")) {
-			logger.info("owner:{}, registrationNumber: {}", c.getOwners(), c.getRegistrationNumber());
+			logger.info("owner:{}, registrationNumber: {}", c.getOwner().getUsername(),
+					c.getRegistrationNumber());
 		}
 	}
 }

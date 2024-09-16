@@ -1,37 +1,35 @@
 package dev.meirong.ecommerce.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
+// @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String firstName;
+	@Column(unique = true)
+	private String username;
 
-	private String lastName;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+	private List<Car> cars;
 
-	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name = "car_owner", joinColumns = {
-			@JoinColumn(name = "owner _id") }, inverseJoinColumns = { @JoinColumn(name = "car_id") })
-	private Set<Car> cars = new HashSet<>();
-
-	public Set<Car> getCars() {
+	public List<Car> getCars() {
 		return cars;
 	}
 
-	public void setCars(Set<Car> cars) {
+	public void setCars(List<Car> cars) {
 		this.cars = cars;
 	}
 
@@ -43,28 +41,17 @@ public class Owner {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
+	public Owner() {}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public Owner(String username) {
+		this.username = username;
 	}
-
-	public Owner() {
-	}
-
-	public Owner(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-
 }
