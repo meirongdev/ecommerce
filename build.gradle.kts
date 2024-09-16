@@ -29,6 +29,9 @@ dependencies {
 	implementation("jakarta.persistence:jakarta.persistence-api:3.1.0"){
 		exclude(group = "xml-apis", module = "xml-apis")
 	}
+
+	implementation("com.auth0:java-jwt:4.4.0")
+
 	// implementation("org.hibernate:hibernate-core:6.6.0.Final")
 	// runtimeOnly("com.h2database:h2")
 	runtimeOnly("mysql:mysql-connector-java:8.0.33")
