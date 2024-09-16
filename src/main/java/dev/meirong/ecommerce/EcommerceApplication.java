@@ -5,9 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import dev.meirong.ecommerce.domain.AppUser;
 import dev.meirong.ecommerce.domain.Car;
 import dev.meirong.ecommerce.domain.Owner;
+import dev.meirong.ecommerce.respository.AppUserRepository;
 import dev.meirong.ecommerce.respository.CarRepository;
 import dev.meirong.ecommerce.respository.OwnerRepository;
 
@@ -17,10 +18,13 @@ public class EcommerceApplication implements CommandLineRunner {
 
 	private final CarRepository carRepository;
 	private final OwnerRepository ownerRepository;
+	private final AppUserRepository appUserRepository;
 
-	public EcommerceApplication(CarRepository carRepository, OwnerRepository ownerRepository) {
+	public EcommerceApplication(CarRepository carRepository, OwnerRepository ownerRepository,
+			AppUserRepository appUserRepository) {
 		this.carRepository = carRepository;
 		this.ownerRepository = ownerRepository;
+		this.appUserRepository = appUserRepository;
 	}
 
 	public static void main(String[] args) {
@@ -31,7 +35,7 @@ public class EcommerceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 
-		Owner owner = new Owner("user1");
+		Owner owner = new Owner("Xi", "Huang");
 		ownerRepository.save(owner);
 
 
@@ -51,8 +55,15 @@ public class EcommerceApplication implements CommandLineRunner {
 		// }
 
 		for (Car c : carRepository.findByBrand("Toyota")) {
-			logger.info("owner:{}, registrationNumber: {}", c.getOwner().getUsername(),
+			logger.info("owner:{}, registrationNumber: {}", c.getOwner().getFirstname(),
 					c.getRegistrationNumber());
 		}
+
+		// Username: user, password: user
+		appUserRepository.save(new AppUser("user",
+				"$2a$10$B7hf/JY5Zg5B9ukY3XE5RO4lh6MXFi1JO4.QAMSxRpzNGgvq3EOLi", "USER"));
+		// Username: admin, password: admin
+		appUserRepository.save(new AppUser("admin",
+				"$2a$10$HCfIKB7n5c3kFwd9OHNSOeLaxDWwC/mZw93VFhkVujFCUwSSaEIoK", "ADMIN"));
 	}
 }
