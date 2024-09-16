@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -27,6 +28,8 @@ public class SecurityConfig {
 	private final UserDetailsService userDetailsService;
 	private final AuthenticationFilter authenticationFilter;
 	private final AuthEntryPoint exceptionHandler;
+
+	private static final String[] SWAGGER_PATHS = {"/api-docs/**", "/swagger-ui/**"};
 
 	public SecurityConfig(UserDetailsService userDetailsService,
 			AuthenticationFilter authenticationFilter, AuthEntryPoint exceptionHandler) {
@@ -52,16 +55,16 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf((csrf) -> csrf.disable())
-		.cors(withDefaults())
+		http.csrf((csrf) -> csrf.disable()).cors(withDefaults())
 				.sessionManagement((sessionManagement) -> sessionManagement
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
-						.requestMatchers(HttpMethod.POST, "/login").permitAll().anyRequest()
-						.authenticated())
+						.requestMatchers(HttpMethod.POST, "/login").permitAll()
+						.requestMatchers(SWAGGER_PATHS).permitAll().anyRequest().authenticated())
 				.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
-				.exceptionHandling((exceptionHandling) -> exceptionHandling
+				.exceptionHandling(exceptionHandling -> exceptionHandling
 						.authenticationEntryPoint(exceptionHandler));
+
 		return http.build();
 	}
 

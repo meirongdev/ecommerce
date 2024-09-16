@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import dev.meirong.ecommerce.domain.AppUser;
 import dev.meirong.ecommerce.domain.Car;
 import dev.meirong.ecommerce.domain.Owner;
@@ -13,6 +14,7 @@ import dev.meirong.ecommerce.respository.CarRepository;
 import dev.meirong.ecommerce.respository.OwnerRepository;
 
 @SpringBootApplication
+@EnableMethodSecurity
 public class EcommerceApplication implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(EcommerceApplication.class);
 
