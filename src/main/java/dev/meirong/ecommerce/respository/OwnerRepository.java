@@ -1,9 +1,6 @@
 package dev.meirong.ecommerce.respository;
 
+import dev.meirong.ecommerce.domain.Owner;
 import org.springframework.data.repository.CrudRepository;
 
-import dev.meirong.ecommerce.domain.Owner;
-
-public interface OwnerRepository extends CrudRepository<Owner, Long> {
-
-}
+public interface OwnerRepository extends CrudRepository<Owner, Long> {}

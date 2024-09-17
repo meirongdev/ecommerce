@@ -1,8 +1,10 @@
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.3.3"
 	id("io.spring.dependency-management") version "1.1.6"
 	id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
+	id("com.diffplug.spotless") version "7.0.0.BETA2"
 }
 
 group = "dev.meirong"
@@ -46,4 +48,50 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+
+
+spotless {
+    // optional: limit format enforcement to just the files changed by this feature branch
+    // ratchetFrom("origin/main")
+    format("misc") {
+			// define the files to apply `misc` to
+			target("*.gradle", ".gitattributes", ".gitignore")
+
+			// define the steps to apply to those files
+			trimTrailingWhitespace()
+			indentWithSpaces(4) // or spaces. Takes an integer argument if you don't like 4
+			endWithNewline()
+    }
+
+    java {
+			target("src/**/*.java")
+			// can't remove like `import java.util.*;`
+			// only can remove like `import java.util.List;`
+			googleJavaFormat()
+			formatAnnotations()
+    }
+}
+
+repositories {
+    mavenCentral() // 添加 Maven Central 仓库
+}
+
+
+tasks.register<Copy>("copyPreCommitHook") {
+	description = "Copy pre-commit hook to .git/hooks"
+	group = "git hooks"
+	outputs.upToDateWhen { false }
+	val preCommitHook = file("$rootDir/scripts/pre-commit")
+	val preCommitHookDest = file("$rootDir/.git/hooks/pre-commit")
+	from(preCommitHook)
+	into(preCommitHookDest.parentFile)
+	doLast {
+		preCommitHookDest.setExecutable(true)
+	}
+}
+
+tasks.build {
+	dependsOn("copyPreCommitHook")
 }

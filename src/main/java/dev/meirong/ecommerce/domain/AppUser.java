@@ -9,56 +9,58 @@ import jakarta.persistence.Id;
 @Entity
 public class AppUser {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, updatable = false)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(nullable = false, updatable = false)
+  private Long id;
 
-	@Column(nullable = false, unique = true)
-	private String username;
-	@Column(nullable = false)
-	private String password;
-	@Column(nullable = false)
-	private String role;
+  @Column(nullable = false, unique = true)
+  private String username;
 
-	public Long getId() {
-		return id;
-	}
+  @Column(nullable = false)
+  private String password;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(nullable = false)
+  private String role;
 
-	public String getUsername() {
-		return username;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-	public String getRole() {
-		return role;
-	}
+  public String getPassword() {
+    return password;
+  }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-	public AppUser() {}
+  public String getRole() {
+    return role;
+  }
 
-	public AppUser(String username, String password, String role) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.role = role;
-	}
+  public void setRole(String role) {
+    this.role = role;
+  }
+
+  public AppUser() {}
+
+  public AppUser(String username, String password, String role) {
+    super();
+    this.username = username;
+    this.password = password;
+    this.role = role;
+  }
 }
