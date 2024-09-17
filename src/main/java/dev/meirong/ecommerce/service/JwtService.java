@@ -2,16 +2,11 @@ package dev.meirong.ecommerce.service;
 
 
 import jakarta.servlet.http.HttpServletRequest;
-import java.security.Key;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -48,7 +43,7 @@ public class JwtService {
 		String token = request.getHeader(HttpHeaders.AUTHORIZATION);
 		token = token.replace(PREFIX, "");
 		if (token != null) {
-			DecodedJWT jwt = JWT.require(rsa256).build().verify(token);
+			DecodedJWT jwt = verifier.verify(token);
 			String user = jwt.getClaim("username").asString();
 			if (user != null)
 				return user;
