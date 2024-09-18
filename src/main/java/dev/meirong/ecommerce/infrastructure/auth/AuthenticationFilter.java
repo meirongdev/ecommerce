@@ -1,6 +1,5 @@
-package dev.meirong.ecommerce.configuration;
+package dev.meirong.ecommerce.infrastructure.auth;
 
-import dev.meirong.ecommerce.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

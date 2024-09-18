@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.configuration;
+package dev.meirong.ecommerce.infrastructure.auth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

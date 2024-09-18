@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.service;
+package dev.meirong.ecommerce.infrastructure.auth;
 
 import dev.meirong.ecommerce.domain.account.AppUser;
 import dev.meirong.ecommerce.domain.account.AppUserRepository;

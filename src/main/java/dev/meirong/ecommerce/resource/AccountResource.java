@@ -1,7 +1,7 @@
-package dev.meirong.ecommerce.web;
+package dev.meirong.ecommerce.resource;
 
 import dev.meirong.ecommerce.domain.account.AccountCredentials;
-import dev.meirong.ecommerce.service.JwtService;
+import dev.meirong.ecommerce.infrastructure.auth.JwtService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
+public class AccountResource {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
-  public LoginController(JwtService jwtService, AuthenticationManager authenticationManager) {
+  public AccountResource(JwtService jwtService, AuthenticationManager authenticationManager) {
     this.jwtService = jwtService;
     this.authenticationManager = authenticationManager;
   }

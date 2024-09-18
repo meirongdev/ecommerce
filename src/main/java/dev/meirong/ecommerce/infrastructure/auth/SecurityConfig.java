@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.configuration;
+package dev.meirong.ecommerce.infrastructure.auth;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 

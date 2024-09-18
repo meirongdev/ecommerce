@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.configuration;
+package dev.meirong.ecommerce.infrastructure.docs;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.service;
+package dev.meirong.ecommerce.infrastructure.auth;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
