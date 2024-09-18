@@ -1,11 +1,11 @@
 package dev.meirong.ecommerce;
 
-import dev.meirong.ecommerce.domain.AppUser;
-import dev.meirong.ecommerce.domain.Car;
-import dev.meirong.ecommerce.domain.Owner;
-import dev.meirong.ecommerce.respository.AppUserRepository;
-import dev.meirong.ecommerce.respository.CarRepository;
-import dev.meirong.ecommerce.respository.OwnerRepository;
+import dev.meirong.ecommerce.domain.account.AppUser;
+import dev.meirong.ecommerce.domain.account.AppUserRepository;
+import dev.meirong.ecommerce.domain.car.Car;
+import dev.meirong.ecommerce.domain.car.CarRepository;
+import dev.meirong.ecommerce.domain.car.Owner;
+import dev.meirong.ecommerce.domain.car.OwnerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

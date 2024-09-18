@@ -46,6 +46,7 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+	implementation("com.googlecode.libphonenumber:libphonenumber:8.13.45")
 }
 
 tasks.withType<Test> {

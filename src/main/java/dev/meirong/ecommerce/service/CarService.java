@@ -1,6 +1,6 @@
 package dev.meirong.ecommerce.service;
 
-import dev.meirong.ecommerce.domain.Car;
+import dev.meirong.ecommerce.domain.car.Car;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 

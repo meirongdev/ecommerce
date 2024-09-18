@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.domain;
+package dev.meirong.ecommerce.domain.car;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

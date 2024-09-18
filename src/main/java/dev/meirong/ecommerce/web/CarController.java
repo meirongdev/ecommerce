@@ -1,7 +1,7 @@
 package dev.meirong.ecommerce.web;
 
-import dev.meirong.ecommerce.domain.Car;
-import dev.meirong.ecommerce.respository.CarRepository;
+import dev.meirong.ecommerce.domain.car.Car;
+import dev.meirong.ecommerce.domain.car.CarRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

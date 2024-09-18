@@ -1,4 +1,4 @@
-package dev.meirong.ecommerce.domain;
+package dev.meirong.ecommerce.domain.car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

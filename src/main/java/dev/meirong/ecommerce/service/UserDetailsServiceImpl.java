@@ -1,7 +1,7 @@
 package dev.meirong.ecommerce.service;
 
-import dev.meirong.ecommerce.domain.AppUser;
-import dev.meirong.ecommerce.respository.AppUserRepository;
+import dev.meirong.ecommerce.domain.account.AppUser;
+import dev.meirong.ecommerce.domain.account.AppUserRepository;
 import java.util.Optional;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,5 @@
-package dev.meirong.ecommerce.respository;
+package dev.meirong.ecommerce.domain.car;
 
-import dev.meirong.ecommerce.domain.Car;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

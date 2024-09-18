@@ -1,6 +1,5 @@
-package dev.meirong.ecommerce.respository;
+package dev.meirong.ecommerce.domain.account;
 
-import dev.meirong.ecommerce.domain.AppUser;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -9,4 +8,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(exported = false)
 public interface AppUserRepository extends CrudRepository<AppUser, Long> {
   Optional<AppUser> findByUsername(String username);
+
+  Optional<AppUser> findByEmail(String email);
+
+  Optional<AppUser> findByPhoneNumber(String phoneNumber);
 }

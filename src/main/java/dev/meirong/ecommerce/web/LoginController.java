@@ -1,6 +1,6 @@
 package dev.meirong.ecommerce.web;
 
-import dev.meirong.ecommerce.domain.AccountCredentials;
+import dev.meirong.ecommerce.domain.account.AccountCredentials;
 import dev.meirong.ecommerce.service.JwtService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

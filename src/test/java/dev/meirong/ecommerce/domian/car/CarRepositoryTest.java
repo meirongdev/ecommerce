@@ -1,9 +1,9 @@
-package dev.meirong.ecommerce.repository;
+package dev.meirong.ecommerce.domian.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.meirong.ecommerce.domain.Car;
-import dev.meirong.ecommerce.respository.CarRepository;
+import dev.meirong.ecommerce.domain.car.Car;
+import dev.meirong.ecommerce.domain.car.CarRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
