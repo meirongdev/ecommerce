@@ -41,7 +41,7 @@ public class EcommerceApplication implements CommandLineRunner {
     Owner owner = new Owner("Xi", "Huang");
     ownerRepository.save(owner);
 
-    var car = new Car("Toyota", "Camry", "Black", "A1000", 20000, 1000, "A car for the family");
+    var car = new Car("Toyota", "Camry", "Black", "A1000", 20000, 1000);
     car.setOwner(owner);
     carRepository.save(car);
     logger.info("Car is created {}", car.getId());

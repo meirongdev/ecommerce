@@ -15,15 +15,13 @@ class CarRepositoryTest {
 
   @Test
   void saveCar() {
-    repositoy.save(
-        new Car("TestCarSave", "Camry", "Black", "A1000", 20000, 1000, "A car for the family"));
+    repositoy.save(new Car("TestCarSave", "Camry", "Black", "A1000", 20000, 1000));
     assertThat(repositoy.findByBrand("TestCarSave")).hasSize(1);
   }
 
   @Test
   void deleteCars() {
-    repositoy.save(
-        new Car("TestCarDelete", "Camry", "Black", "A1000", 20000, 1000, "A car for the family"));
+    repositoy.save(new Car("TestCarDelete", "Camry", "Black", "A1000", 20000, 1000));
     repositoy.deleteAll();
     assertThat(repositoy.findByBrand("TestCarDelete")).isEmpty();
   }

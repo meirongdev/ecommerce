@@ -1,6 +1,5 @@
 package dev.meirong.ecommerce.domain.car;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,9 +21,6 @@ public class Car {
   private int modelYear;
   private int price;
 
-  @Column(nullable = false, length = 200)
-  private String description;
-
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "owner")
   private Owner owner;
@@ -39,8 +35,7 @@ public class Car {
       String color,
       String registrationNumber,
       int modelYear,
-      int price,
-      String description) {
+      int price) {
     super();
     this.brand = brand;
     this.model = model;
@@ -48,7 +43,6 @@ public class Car {
     this.registrationNumber = registrationNumber;
     this.modelYear = modelYear;
     this.price = price;
-    this.description = description;
   }
 
   public Long getId() {
@@ -107,14 +101,6 @@ public class Car {
     this.price = price;
   }
 
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public Owner getOwner() {
     return owner;
   }
@@ -134,7 +120,7 @@ public class Car {
     result = prime * result + ((registrationNumber == null) ? 0 : registrationNumber.hashCode());
     result = prime * result + modelYear;
     result = prime * result + price;
-    result = prime * result + ((description == null) ? 0 : description.hashCode());
+    result = prime * result + ((owner == null) ? 0 : owner.hashCode());
     return result;
   }
 
@@ -161,9 +147,9 @@ public class Car {
     } else if (!registrationNumber.equals(other.registrationNumber)) return false;
     if (modelYear != other.modelYear) return false;
     if (price != other.price) return false;
-    if (description == null) {
-      if (other.description != null) return false;
-    } else if (!description.equals(other.description)) return false;
+    if (owner == null) {
+      if (other.owner != null) return false;
+    } else if (!owner.equals(other.owner)) return false;
     return true;
   }
 }
